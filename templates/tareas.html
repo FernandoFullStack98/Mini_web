@@ -53,10 +53,14 @@
 {% if tareas %}
 <ul>
     {% for tarea in tareas %}
-    <li>
-        <span class="{% if tarea.completada %}tarea-completada{% endif %}">{{ tarea.tarea }}</span>
-        <p>{{ tarea.tiempo_transcurrido }}</p>
-        <div>
+    <li class="tarea-card">
+        <div class="tarea-info">
+            <h3 class="{% if tarea.completada %}tarea-completada{% endif %}">
+                {{ tarea.tarea }}
+            </h3>
+            <p>{{ tarea.tiempo_transcurrido }}</p>
+        </div>
+        <div class="tarea-acciones">
             <a href="/eliminar/{{ tarea.id }}" class="eliminar">Eliminar</a>
             <a href="/completar/{{ tarea.id }}" class="completar">
                 {% if tarea.completada %}

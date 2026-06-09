@@ -76,30 +76,12 @@ main ul{
     padding: 0px;
 }
 
-main li{
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-}
-
 main li a{
     color: #2563eb;
     text-decoration: none;
     font-weight: bold;
 }
 
-main li div{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
 
 main li div span{
     color: #16a34a;
@@ -320,6 +302,50 @@ input:focus{
 }
 .perfil a:hover{
     background-color: #1d4ed8;
+}
+
+.tarea-info{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tarea-card{
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.tarea-acciones{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tarea-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0px 6px 14px rgba(0,0,0,0.15);
+}
+
+.skills{
+        background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 @media (max-width: 600px){
