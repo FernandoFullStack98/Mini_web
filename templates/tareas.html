@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Lista de tareas</h1>
+<br>
+<form method="GET">
+    <input type="hidden" name="estado" id="estado" value="{{estado}}">
+    <label for="buscar">Buscar tarea</label>
+    <input type="text" id="buscar" name="buscar" value="{{busqueda}}">
+    <button type="submit">Enviar</button>
+</form>
+<br>
+<form action="/tareas" method="POST">
+    <label for="tareas">Tareas</label>
+    <input type="text" id="tareas" name="tarea">
+    <button type="submit">Enviar</button>
+</form>
+<div class="nav-filtros">
+    <a href="/tareas">Todas</a>
+    <a href="/tareas?estado=pendientes">Pendientes</a>
+    <a href="/tareas?estado=completadas">Completadas</a>
+    <br>
+</div>
+<div class="estadisticas">
+    {% if long_tareas == 1 %}
+    <p class="estadisticas-card-tarea">{{ long_tareas }} Tarea</p>
+    {% else %}
+    <p class="estadisticas-card-tarea">{{ long_tareas }} Tareas</p>
+    {% endif %}
+    {% if tareas_totales_completadas == 1 %}
+    <p class="estadisticas-card-completadas">{{ tareas_totales_completadas }} Tarea completada</p>
+    {% else %}
+    <p class="estadisticas-card-completadas">{{ tareas_totales_completadas }} Tareas completadas</p>
+    {% endif %}
+    {% if tareas_totales_pendientes == 1 %}
+    <p class="estadisticas-card-pendientes">{{ tareas_totales_pendientes }} Tarea pendiente</p>
+    {% else %}
+    <p class="estadisticas-card-pendientes">{{ tareas_totales_pendientes }} Tareas pendientes</p>
+    {% endif %}
+</div>
+<form action="/tareas" method="GET">
+    <input type="hidden" name="estado" value="{{estado}}">
+    <input type="hidden" name="busqueda" value="{{busqueda}}">
+    <label for="orden">Ordenar por</label>
+    <select name="orden" id="orden">
+        <option id="nuevas" value="nuevas" {% if orden=="nuevas" %}selected{% endif %}>Nuevas tareas</option>
+        <option id="antiguas" value="antiguas" {% if orden=="antiguas" %}selected{% endif %}>Antiguas tareas</option>
+        <option id="az" value="az" {% if orden=="az" %}selected{% endif %}>A-Z</option>
+        <option id="za" value="za" {% if orden=="za" %}selected{% endif %}>Z-A</option>
+    </select>
+    <button type="submit">Enviar</button>
+</form>
+<br>
+{% if tareas %}
+<ul>
+    {% for tarea in tareas %}
+    <li>
+        <span class="{% if tarea.completada %}tarea-completada{% endif %}">{{ tarea.tarea }}</span>
+        <p>{{ tarea.tiempo_transcurrido }}</p>
+        <div>
+            <a href="/eliminar/{{ tarea.id }}" class="eliminar">Eliminar</a>
+            <a href="/completar/{{ tarea.id }}" class="completar">
+                {% if tarea.completada %}
+                Desmarcar tarea
+                {% else %}
+                Marcar como completada
+                {% endif %}
+            </a>
+            <a href="/editar/{{ tarea.id }}" class="editar">Editar</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay tareas</p>
+{% endif %}
+{% endblock %}

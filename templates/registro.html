@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css' ) }}">
+    <title>Login</title>
+</head>
+
+<body class="body-register">
+    <form action="/register" method="POST" class="registro">
+        <h2>Crear Cuenta</h2>
+        <label for="usuario">Usuario</label>
+        <input type="text" name="usuario" id="usuario" required>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+
+</html>

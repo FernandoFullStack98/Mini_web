@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css' ) }}">
+    <title>Base</title>
+</head>
+
+<body>
+    <header>
+        <div class="auth">
+            {% if "usuario" in session %}
+            <p>Hola, {{ session["usuario"] }}</p>
+            <a href="/logout">Cerrar sesion</a>
+            {% else %}
+            <a href="/login">Iniciar sesion</a>
+            <a href="/register">Resgistrarse</a>
+            {% endif %}
+        </div>
+        <h1>Gestor de tareas</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/sobre-mi">Sobre mi</a></li>
+                <li><a href="/contacta">Contacta</a></li>
+                <li><a href="/saludo">Saludo</a></li>
+                <li><a href="/tareas">Tareas</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% with mensajes = get_flashed_messages(with_categories=True) %}
+        {% if mensajes %}
+        {% for categoria,mensaje in mensajes %}
+        <div class="flash {{ categoria }}">
+            <p>{{ mensaje }}</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% block contenido %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>Aprendiendo flask</p>
+    </footer>
+
+</body>
+
+</html>

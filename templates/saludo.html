@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block contenido %}
+
+<h1>Formulario saludo</h1>
+<form action="" method="POST">
+    <label for="name">Nombre</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Enviar</button>
+</form>
+<br>
+{% if nombre %}
+<p>Hola, {{ nombre }}</p>
+{% endif %}
+<br>
+{% if error %}
+<p>{{ error }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Hola, soy {{ nombre }}</h1>
+<br>
+<h2>Habilidades</h2>
+<ul>
+    {% for habilidad in habilidades %}
+    <li>{{ habilidad }}</li>
+    {% endfor %}
+</ul>
+<br>
+{% if mostrar_proyectos %}
+<h2>Proyectos</h2>
+{% for proyecto in proyectos %}
+<article>
+    <h3>{{ proyecto.titulo }}</h3>
+    <p>{{ proyecto.descripcion }}</p>
+</article>
+{% endfor %}
+
+{% else %}
+<p> No hay proyectos disponibles</p>
+{% endif %}
+<br>
+{% endblock %}

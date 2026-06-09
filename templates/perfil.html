@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="estadisticas-card-tarea">
+    <p>👤 {{ usuario.usuario }}</p>
+    <p> 📧 {{ usuario.email }}</p>
+    {% if long_tareas == 1 %}
+    <p>📋 {{ long_tareas }} Tarea</p>
+    {% else %}
+    <p>📋 {{ long_tareas }} Tareas</p>
+    {% endif %}
+    {% if tareas_totales_completadas == 1 %}
+    <p>✅ {{ tareas_totales_completadas }} Tarea completada</p>
+    {% else %}
+    <p>✅ {{ tareas_totales_completadas }} Tareas completadas</p>
+    {% endif %}
+    {% if tareas_totales_pendientes == 1 %}
+    <p>⏳ {{ tareas_totales_pendientes }} Tarea pendiente</p>
+    {% else %}
+    <p>⏳ {{ tareas_totales_pendientes }} Tareas pendientes</p>
+    {% endif %}
+</div>
+<br>
+<form action="" method="POST">
+    <label for="nuevo_mail">Actualizar email</label>
+    <br><br>
+    <input type="email" name="nuevo_mail">
+    <br><br>
+    <button type="submit" name="email_new">Actualizar</button>
+</form>
+<form action="" method="POST">
+    <label for="password_actual">Contraseña actual</label>
+    <input type="password" name="password_actual" id="password_actual">
+    <label for="password_nueva">Contraseña nueva</label>
+    <input type="password" name="password_nueva" id="password_nueva">
+    <label for="password_repetida">Contraseña repetida</label>
+    <input type="password" name="password_repetida" id="password_repetida">
+    <button type="submit" name="password_new">Actualizar contraseña</button>
+</form>
+<div class="perfil">
+    <a href="/logout">Cerrar sesion</a>
+</div>
+
+{% endblock %}

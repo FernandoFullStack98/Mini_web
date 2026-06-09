@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h2>Bienvenido {{ session["usuario"]}}</h2>
+<h3>📊 Estadisticas</h3>
+<div class="estadisticas">
+    <p class="estadisticas-card-tarea">Numero de tareas: {{ long_tareas }}</p>
+    <p class="estadisticas-card-completadas">Tareas completadas: {{ tareas_totales_completadas }}</p>
+    <p class="estadisticas-card-pendientes">Tareas pendientes: {{ tareas_totales_pendientes }}</p>
+</div>
+<h3>📋 Ultimas tareas</h3>
+{% for tarea in ultimas_tareas %}
+<p>- {{ tarea.tarea }} ({{ tarea.tiempo_transcurrido }})</p>
+{% endfor %}
+<h3>🔥 Pendientes</h3>
+{% for tarea in ultimas_tareas_pendientes %}
+<p>- {{ tarea.tarea }} ({{ tarea.tiempo_transcurrido }})</p>
+{% endfor %}
+<h3>📅 Tareas creadas hoy</h3>
+<p>- {{ tareas_creadas_hoy }}</p>
+{% endblock %}

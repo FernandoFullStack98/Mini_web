@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Editar tareas</h1>
+<form method="POST">
+    <input type="text" name="tarea" value="{{ tarea.tarea }}">
+    <button type="submit">Enviar</button>
+</form>
+<a href="/tareas" class="atras">Atras</a>
+{% endblock %}
