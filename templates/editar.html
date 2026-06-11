@@ -3,6 +3,13 @@
 <h1>Editar tareas</h1>
 <form method="POST">
     <input type="text" name="tarea" value="{{ tarea.tarea }}">
+
+    <input type="radio" id="baja" name="prioridad" value="baja" {% if tarea.prioridad=="baja" %} checked {% endif %}>
+    <label for="baja">Baja</label>
+    <input type="radio" id="media" name="prioridad" value="media" {% if tarea.prioridad=="media" %} checked {% endif %}>
+    <label for="media">Media</label>
+    <input type="radio" id="alta" name="prioridad" value="alta" {% if tarea.prioridad=="alta" %} checked {% endif %}>
+    <label for="alta">Alta</label>
     <button type="submit">Enviar</button>
 </form>
 <a href="/tareas" class="atras">Atras</a>

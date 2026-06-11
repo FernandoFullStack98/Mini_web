@@ -101,8 +101,10 @@ def editar(id):
 
     if request.method == "POST":
         nuevo_texto = request.form["tarea"].strip()
+        nueva_prioridad = request.form["prioridad"]
         if nuevo_texto:
             tarea.tarea = nuevo_texto
+            tarea.prioridad = nueva_prioridad
             db.session.commit()
             flash("Tarea actualizada correctamente")
             return redirect(url_for("tareas.gestionar_tareas"))
