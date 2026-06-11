@@ -348,6 +348,17 @@ input:focus{
 
 }
 
+.crear-tarea{
+    flex-direction: column;
+}
+
+.prioridades{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 @media (max-width: 600px){
     nav ul{
         flex-direction: column;

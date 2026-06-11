@@ -36,8 +36,11 @@ def gestionar_tareas():
 
     if request.method == "POST":
         tarea = request.form["tarea"].strip()
+        prioridad = request.form["prioridad"]
         if tarea:
-            nueva_tarea = Tareas_db(tarea=tarea, usuario_id=session["usuario_id"])
+            nueva_tarea = Tareas_db(
+                tarea=tarea, usuario_id=session["usuario_id"], prioridad=prioridad
+            )
             db.session.add(nueva_tarea)
             db.session.commit()
             flash("Tarea creada correctamente", "success")

@@ -2,16 +2,25 @@
 {% block contenido %}
 <h1>Lista de tareas</h1>
 <br>
-<form method="GET">
+<form method="GET" class="crear-tarea">
     <input type="hidden" name="estado" id="estado" value="{{estado}}">
     <label for="buscar">Buscar tarea</label>
     <input type="text" id="buscar" name="buscar" value="{{busqueda}}">
     <button type="submit">Enviar</button>
 </form>
 <br>
-<form action="/tareas" method="POST">
+<form action="/tareas" method="POST" class="crear-tarea">
     <label for="tareas">Tareas</label>
     <input type="text" id="tareas" name="tarea">
+    <h4>Prioridad</h4>
+    <div class="prioridades">
+        <input type="radio" id="baja" name="prioridad" value="baja">
+        <label for="baja">Baja</label>
+        <input type="radio" id="media" name="prioridad" value="media">
+        <label for="media">Media</label>
+        <input type="radio" id="alta" name="prioridad" value="alta">
+        <label for="alta">Alta</label>
+    </div>
     <button type="submit">Enviar</button>
 </form>
 <div class="nav-filtros">
@@ -58,6 +67,15 @@
             <h3 class="{% if tarea.completada %}tarea-completada{% endif %}">
                 {{ tarea.tarea }}
             </h3>
+            {% if tarea.prioridad == "alta" %}
+            <p>🔴 {{ tarea.prioridad.capitalize() }}</p>
+            {% endif %}
+            {% if tarea.prioridad == "media" %}
+            <p>🟡 {{ tarea.prioridad.capitalize() }}</p>
+            {% endif %}
+            {% if tarea.prioridad == "baja" %}
+            <p>🟢 {{ tarea.prioridad.capitalize() }}</p>
+            {% endif %}
             <p>{{ tarea.tiempo_transcurrido }}</p>
         </div>
         <div class="tarea-acciones">

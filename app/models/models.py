@@ -12,6 +12,7 @@ class Tareas_db(db.Model):
     completada = db.Column(db.Boolean, default=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     fecha_creacion = db.Column(db.DateTime, default=datetime.now)
+    prioridad = db.Column(db.String(20), default="Media")
 
 
 class Usuarios(db.Model):
