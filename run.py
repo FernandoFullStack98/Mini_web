@@ -9,7 +9,9 @@ from app.routes.perfil_routes import perfil_bp
 
 app = Flask(__name__)
 app.secret_key = "1,2,3,4,5"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tareas_db.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    "postgresql://postgres:Fernando1721998@localhost:5432/mini_web_db"
+)
 db.init_app(app)
 app.register_blueprint(tareas_bp)
 app.register_blueprint(auth_routes_bp)
