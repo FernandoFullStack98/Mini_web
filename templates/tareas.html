@@ -24,10 +24,18 @@
     <button type="submit">Enviar</button>
 </form>
 <div class="nav-filtros">
+    <h4>Estado tareas</h4>
     <a href="/tareas">Todas</a>
     <a href="/tareas?estado=pendientes">Pendientes</a>
     <a href="/tareas?estado=completadas">Completadas</a>
     <br>
+</div>
+<div class="nav-filtros">
+    <h4>Prioridad tareas</h4>
+    <a href="/tareas">Todas</a>
+    <a href="/tareas?prioridad=alta">Alta</a>
+    <a href="/tareas?prioridad=media">Media</a>
+    <a href="/tareas?prioridad=baja">Baja</a>
 </div>
 <div class="estadisticas">
     {% if long_tareas == 1 %}

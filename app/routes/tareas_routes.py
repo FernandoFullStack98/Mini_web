@@ -13,6 +13,7 @@ def gestionar_tareas():
     busqueda = request.args.get("buscar", "")
     estado = request.args.get("estado", "todas").strip()
     orden = request.args.get("orden", "nuevas")
+    prioridad = request.args.get("prioridad", "todas")
     tareas = Tareas_db.query.filter_by(usuario_id=session["usuario_id"])
 
     if estado == "pendientes":
@@ -31,6 +32,13 @@ def gestionar_tareas():
         tareas = tareas.order_by(Tareas_db.tarea.asc())
     elif orden == "za":
         tareas = tareas.order_by(Tareas_db.tarea.desc())
+
+    if prioridad == "alta":
+        tareas = tareas.filter_by(prioridad="alta")
+    elif prioridad == "media":
+        tareas = tareas.filter_by(prioridad="media")
+    elif prioridad == "baja":
+        tareas = tareas.filter_by(prioridad="baja")
 
     tareas = tareas.all()
 
