@@ -7,6 +7,11 @@
     <p class="estadisticas-card-completadas">Tareas completadas: {{ tareas_totales_completadas }}</p>
     <p class="estadisticas-card-pendientes">Tareas pendientes: {{ tareas_totales_pendientes }}</p>
 </div>
+<div class="estadisticas">
+    <p class="estadisticas-card-tarea">Tareas con alta prioridad: {{ long_alta_prio }}</p>
+    <p class="estadisticas-card-completadas">Tareas con media prioridad: {{ long_media_prio }}</p>
+    <p class="estadisticas-card-pendientes">Tareas con baja prioridad: {{ long_baja_prio }}</p>
+</div>
 <h3>📋 Ultimas tareas</h3>
 {% for tarea in ultimas_tareas %}
 <p>- {{ tarea.tarea }} ({{ tarea.tiempo_transcurrido }})</p>

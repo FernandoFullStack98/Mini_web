@@ -54,6 +54,24 @@
     <p class="estadisticas-card-pendientes">{{ tareas_totales_pendientes }} Tareas pendientes</p>
     {% endif %}
 </div>
+<div class="estadisticas">
+    {% if long_alta_prio == 1 %}
+    <p class="estadisticas-card-tarea"> {{ long_alta_prio }} Tarea con alta prioridad</p>
+    {% else %}
+    <p class="estadisticas-card-tarea">{{ long_alta_prio }} Tareas con alta prioridad</p>
+    {% endif %}
+    {% if long_media_prio == 1 %}
+    <p class="estadisticas-card-completadas"> {{ long_media_prio }} Tarea con media prioridad</p>
+    {% else %}
+    <p class="estadisticas-card-completadas">{{ long_media_prio }} Tareas con media prioridad</p>
+    {% endif %}
+    {% if long_baja_prio == 1 %}
+    <p class="estadisticas-card-pendientes"> {{ long_baja_prio }} Tarea con baja prioridad</p>
+    {% else %}
+    <p class="estadisticas-card-pendientes">{{ long_baja_prio }} Tareas con baja prioridad</p>
+    {% endif %}
+
+</div>
 <form action="/tareas" method="GET">
     <input type="hidden" name="estado" value="{{estado}}">
     <input type="hidden" name="busqueda" value="{{busqueda}}">

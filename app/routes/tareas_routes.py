@@ -1,6 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from app.models.models import Tareas_db, db, Usuarios
-from app.utils.helpers import buscar_tarea, calcular_tareas, tiempo_transcurrido
+from app.models.models import Tareas_db, db
+from app.utils.helpers import (
+    buscar_tarea,
+    calcular_tareas,
+    tiempo_transcurrido,
+    calcular_prioridad,
+)
 
 tareas_bp = Blueprint("tareas", __name__)
 
@@ -62,6 +67,7 @@ def gestionar_tareas():
     long_tareas, tareas_totales_completadas, tareas_totales_pendientes = (
         calcular_tareas()
     )
+    long_alta_prio, long_media_prio, long_baja_prio = calcular_prioridad()
 
     return render_template(
         "tareas.html",
@@ -72,6 +78,9 @@ def gestionar_tareas():
         busqueda=busqueda,
         estado=estado,
         orden=orden,
+        long_alta_prio=long_alta_prio,
+        long_media_prio=long_media_prio,
+        long_baja_prio=long_baja_prio,
     )
 
 

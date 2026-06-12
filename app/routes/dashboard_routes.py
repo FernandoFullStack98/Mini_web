@@ -1,7 +1,6 @@
 from flask import Blueprint, session, redirect, url_for, render_template
-from app.utils.helpers import calcular_tareas
+from app.utils.helpers import calcular_tareas, tiempo_transcurrido, calcular_prioridad
 from app.models.models import Tareas_db
-from app.utils.helpers import tiempo_transcurrido
 from datetime import datetime
 
 dashboard_bp = Blueprint("dashboard", __name__)
@@ -36,6 +35,8 @@ def dashboard():
         calcular_tareas()
     )
 
+    long_alta_prio, long_media_prio, long_baja_prio = calcular_prioridad()
+
     tareas_creadas_hoy = 0
 
     tareas = Tareas_db.query.filter_by(usuario_id=session["usuario_id"]).all()
@@ -52,4 +53,7 @@ def dashboard():
         ultimas_tareas=ultimas_tareas,
         ultimas_tareas_pendientes=ultimas_tareas_pendientes,
         tareas_creadas_hoy=tareas_creadas_hoy,
+        long_alta_prio=long_alta_prio,
+        long_media_prio=long_media_prio,
+        long_baja_prio=long_baja_prio,
     )

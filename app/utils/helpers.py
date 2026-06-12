@@ -25,6 +25,25 @@ def calcular_tareas():
     return long_tareas, tareas_totales_completadas, tareas_totales_pendientes
 
 
+def calcular_prioridad():
+    prioridad_alta = Tareas_db.query.filter_by(
+        usuario_id=session["usuario_id"], prioridad="alta"
+    ).all()
+    long_alta_prio = len(prioridad_alta)
+
+    prioridad_media = Tareas_db.query.filter_by(
+        usuario_id=session["usuario_id"], prioridad="media"
+    ).all()
+    long_media_prio = len(prioridad_media)
+
+    prioridad_baja = Tareas_db.query.filter_by(
+        usuario_id=session["usuario_id"], prioridad="baja"
+    ).all()
+    long_baja_prio = len(prioridad_baja)
+
+    return long_alta_prio, long_media_prio, long_baja_prio
+
+
 def tiempo_transcurrido(fecha_creacion):
     ahora = datetime.now()
     diferencia = ahora - fecha_creacion
