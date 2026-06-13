@@ -1,7 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from app.models.models import Tareas_db, db, Usuarios
-from app.utils.helpers import buscar_tarea, calcular_tareas
+from flask import Flask, render_template, request
+from app.models.models import db
 from app.routes.tareas_routes import tareas_bp
 from app.routes.auth_routes import auth_routes_bp
 from app.routes.dashboard_routes import dashboard_bp
@@ -51,7 +49,6 @@ def inicio():
         proyectos=proyectos,
         mostrar_proyectos=mostrar_proyectos,
     )
-    return "Base de datos creada correctamente"
 
 
 @app.route("/sobre-mi")
