@@ -20,9 +20,6 @@ def dashboard():
 
     for tarea in ultimas_tareas:
         tarea.tiempo_transcurrido = tiempo_transcurrido(tarea.fecha_creacion)
-    long_tareas, tareas_totales_completadas, tareas_totales_pendientes = (
-        calcular_tareas()
-    )
 
     ultimas_tareas_pendientes = (
         Tareas_db.query.filter_by(usuario_id=session["usuario_id"], completada=False)
