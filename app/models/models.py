@@ -1,13 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 db = SQLAlchemy()
 
 
 class Tareas_db(db.Model):
-    __tablename__ = "task"
+    __tablename__ = "task" 
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True) 
     tarea = db.Column(db.String(100), nullable=False)
     completada = db.Column(db.Boolean, default=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey("users.id"))

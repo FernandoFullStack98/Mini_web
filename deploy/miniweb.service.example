@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn para Mini_web
+After=network.target
+
+[Service]
+User=fernando
+WorkingDirectory=/home/fernando/Proyectos/Mini_web
+EnvironmentFile=/home/fernando/Proyectos/Mini_web/.env
+ExecStart=/home/fernando/Proyectos/Mini_web/.venv/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 run:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
